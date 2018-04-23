@@ -1,9 +1,8 @@
-# What
-The gitsync Python script is a command line utility that receives a path
-relative to the user's home directory. It will then attempt to verify that
-directory exists, is a git repo and then sync that repo.
-
-# How
+# Script Descriptions
 ```
-python gitsync.py path/relative/to/your/home/directory
+gitsync.py - syncs a specified directory with it's remote repo
+
+    python gitsync.py path/relative/to/your/home/directory
+
+sendemail.py - sends an email using an api service (in particular, Mailgun)
 ```
