@@ -1,10 +1,20 @@
 import os
 import subprocess
 import sys
+import sendemail
+
+# retrieve values for emailing
+scriptName = os.path.basename(__file__)
+to = os.environ.get("EMAIL_TO", "")
+emailFrom = os.environ.get("EMAIL_FROM", "")
+emailServer = os.environ.get("EMAIL_SERVER", "")
+apiKey = os.environ.get("EMAIL_API", "")
 
 # make sure an argument was given
 if len(sys.argv) != 2:
-    print("Error: you must indicate a directory within your home directory")
+    errorMsg = "Error: you must indicate a directory within your home directory"
+    print(errorMsg)
+    sendemail.send_simple_message(apiKey, emailServer, emailFrom, to, scriptName, errorMsg)
     sys.exit(1)
 
 # clean up the given argument
@@ -20,20 +30,26 @@ repoDir = os.path.join(os.path.expanduser("~"), argPath)
 
 # verify the constructed path exists
 if not os.path.exists(repoDir):
-    print("Error: specified directory does not exist: " + repoDir)
+    errorMsg = "Error: specified directory does not exist: " + repoDir
+    print(errorMsg)
+    sendemail.send_simple_message(apiKey, emailServer, emailFrom, to, scriptName, errorMsg)
     sys.exit(1)
 
 os.chdir(repoDir)
 
 # make sure we are in a git repo
 if not os.path.exists(repoDir + "/.git"):
-    print("Error: specified directory is not a git repo: " + repoDir)
+    errorMsg = "Error: specified directory is not a git repo: " + repoDir
+    print(errorMsg)
+    sendemail.send_simple_message(apiKey, emailServer, emailFrom, to, scriptName, errorMsg)
     sys.exit(1)
 
 # pull and verify there was no error
 pullResult = subprocess.run(["git", "pull"])
 if pullResult.returncode != 0:
-    print("Error: git pull errored with code " + pullResult.returncode)
+    errorMsg = "Error: git pull errored with code " + pullResult.returncode
+    print(errorMsg)
+    sendemail.send_simple_message(apiKey, emailServer, emailFrom, to, scriptName, errorMsg)
     sys.exit(1)
 
 # add, commit, and push
