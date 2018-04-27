@@ -1,0 +1,30 @@
+DELETE THINGS
+docker rmi alpine:3.4		Delete a local image
+docker rm infinite		Remove container
+docker rm -f $(docker ps -aq)	Delete running and stopped containers
+
+LIST THINGS
+docker images			List images
+docker ps			List running containers
+docker ps			List all containers
+docker logs --tail 100 web	Print containers logs
+
+BUILD THINGS
+docker build -t myapp:1.0 .	Build image and tag it
+
+RUN THINGS
+docker stop web			Stop a running container
+docker start web 		Start a container
+docker restart web 		Restart a container
+docker exec -it web bash 	Shell into the container
+docker run
+ 	--rm remove container after exit
+ 	-it connect container to terminal
+ 	--name web name the container
+ 	-p 5000:80 assign external:internal port
+ 	-v~/dev:/code map host to container volume
+ 	alpine:3.4 the image to use
+ 	/bin/sh the command to run in the container
+
+LINKS
+https://medium.com/statuscode/dockercheatsheet-9730ce03630d

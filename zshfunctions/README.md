@@ -4,10 +4,10 @@ Use the following stackoverflow for instructions:
 You'll need to source these functions in your .zshrc:
 ```
 fpath=( ~/path/of/zshfunction/cheatsheets "${fpath[@]}" )
-autoload -Uz dockercs
+autoload -Uz cs
 ```
 
 When more functions are added, update your autoload:
 ```
-autoload -Uz dockercs function1 function 2
+autoload -Uz cs function1 function 2
 ```

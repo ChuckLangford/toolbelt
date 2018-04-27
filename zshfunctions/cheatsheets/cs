@@ -1,0 +1,7 @@
+for i in "${fpath[@]}"
+do
+	if [[ $i = *"zshfunctions/cheatsheets"* ]]; then
+	  DIR=$i
+	fi
+done
+less $DIR/"$1.txt"
