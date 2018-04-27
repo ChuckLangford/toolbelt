@@ -3,7 +3,7 @@ Use the following stackoverflow for instructions:
 
 You'll need to source these functions in your .zshrc:
 ```
-fpath=( ~/path/of/zshfunction/dir "${fpath[@]}" )
+fpath=( ~/path/of/zshfunction/cheatsheets "${fpath[@]}" )
 autoload -Uz dockercs
 ```
 
