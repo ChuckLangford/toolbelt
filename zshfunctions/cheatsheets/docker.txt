@@ -2,12 +2,14 @@ DELETE THINGS
 docker rmi alpine:3.4		Delete a local image
 docker rm infinite		Remove container
 docker rm -f $(docker ps -aq)	Delete running and stopped containers
+docker container prune		Delete stopped containers
 
 LIST THINGS
 docker images			List images
 docker ps			List running containers
-docker ps			List all containers
+docker ps -a			List all containers
 docker logs --tail 100 web	Print containers logs
+docker stats			Print container usage stats
 
 BUILD THINGS
 docker build -t myapp:1.0 .	Build image and tag it
