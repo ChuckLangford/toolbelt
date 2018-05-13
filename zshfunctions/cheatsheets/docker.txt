@@ -3,6 +3,9 @@ docker rmi alpine:3.4		Delete a local image
 docker rm infinite		Remove container
 docker rm -f $(docker ps -aq)	Delete running and stopped containers
 docker container prune		Delete stopped containers
+docker rm $(docker ps -q -f status=exited)
+docker stop $(docker ps -q)	Stop active
+docker stop $(docker ps -aq)	Stop all
 
 LIST THINGS
 docker images			List images
@@ -30,3 +33,4 @@ docker run
 
 LINKS
 https://medium.com/statuscode/dockercheatsheet-9730ce03630d
+https://medium.com/@clasikas/docker-tips-tricks-or-just-useful-commands-6e1fd8220450
