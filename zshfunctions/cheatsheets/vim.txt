@@ -1,0 +1,1 @@
+:g/SearchTerm/norm dap		Delete all paragraphs with SearchTerm
